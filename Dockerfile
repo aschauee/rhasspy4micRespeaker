@@ -13,6 +13,19 @@ RUN apt-get update && \
     apt-get install --no-install-recommends --yes \
         python3 python3-dev python3-setuptools python3-pip python3-venv \
         build-essential swig portaudio19-dev libatlas-base-dev
+        
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+      git \
+      alsa-utils \
+      dkms \
+      i2c-tools \
+      libasound2-plugins \
+    && git clone "https://github.com/respeaker/seeed-voicecard" \
+    && cd seeed-voicecard \
+    && chmod a+x ./install.sh \
+    && rm -rf .git \
+    && apt-get purge -y --auto-remove git
 
 COPY etc/shflags ${RHASSPY_APP}/etc/
 COPY download/rhasspy-tools_*.tar.gz \
