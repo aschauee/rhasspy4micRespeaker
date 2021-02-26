@@ -1,4 +1,4 @@
-aiohttp==3.6.2
+aiohttp==3.7.4
 doit==0.31.1
 fuzzywuzzy[speedup]==0.17.0
 html5lib==1.0.1
